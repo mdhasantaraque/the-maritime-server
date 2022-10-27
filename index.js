@@ -7,6 +7,7 @@ app.use(cors());
 
 const categories = require("./data/categories.json");
 const courses = require("./data/courses.json");
+// const premium = require("./data/courses.json");
 
 app.get("/", (req, res) => {
   res.send("New API Running");
@@ -22,6 +23,11 @@ app.get("/courses/:id", (req, res) => {
   const id = req.params.id;
   const selectedCourse = courses.find((n) => n.id === id);
   res.send(selectedCourse);
+});
+app.get("/premium/:id", (req, res) => {
+  const id = req.params.id;
+  const coursePremium = courses.find((p) => p.id === id);
+  res.send(coursePremium);
 });
 
 app.listen(port, () => {
